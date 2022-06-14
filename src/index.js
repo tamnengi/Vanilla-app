@@ -3,6 +3,7 @@ function formatDate(timestamp) {
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
+  }
   let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
@@ -38,5 +39,4 @@ function displayTemperature(response) {
 let apiKey = "405fl0bae34e07976044dc55f313e16a";
 let apiUrl =
   "https://api.openweathermap.org/data/2.5/weather?q=Houston&appid=405f10bae34e07976244dc55f313e16a&units=metric";
-console.log(apiUrl);
 axios.get(apiUrl).then(displayTemperature);
