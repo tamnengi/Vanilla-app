@@ -40,16 +40,19 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 }
-function search(event) {
+
+function search(city) {
+  let apiKey = "405fl0bae34e07976044dc55f313e16a";
+  let apiUrl =
+    "https://api.openweathermap.org/data/2.5/weather?q=Houston&appid=405f10bae34e07976244dc55f313e16a&units=metric";
+
+  axios.get(apiUrl).then(displayTemperature);
+}
+function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
-  console.log(cityInputElement.value);
+  search(cityInputElement.value);
 }
 
-let apiKey = "405fl0bae34e07976044dc55f313e16a";
-let apiUrl =
-  "https://api.openweathermap.org/data/2.5/weather?q=Houston&appid=405f10bae34e07976244dc55f313e16a&units=metric";
-
-axios.get(apiUrl).then(displayTemperature);
-let form = document.querySelector("search-form");
-form.addEventListener("submit", search);
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
