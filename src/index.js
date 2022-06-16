@@ -43,8 +43,7 @@ function displayTemperature(response) {
 }
 function search(city) {
   let apiKey = "405f10bae34e07976244dc55f313e16a";
-  let apiUrl =
-    "https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=405f10bae34e07976244dc55f313e16a&units=metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayTemperature);
 }
@@ -53,7 +52,7 @@ function handleSubmit(event) {
   let cityInputElement = document.querySelector("#city-input");
   search(cityInputElement.value);
 }
-search("");
+search("Houston");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
